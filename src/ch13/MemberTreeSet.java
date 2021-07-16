@@ -1,28 +1,26 @@
-package ch12;
+package ch13;
 
-import java.util.HashSet;
 import java.util.Iterator;
+import java.util.TreeSet;
 
-public class MemberHashSet {
-	public HashSet<Member> hashSet; //HashSet 선언
+public class MemberTreeSet {
+	public TreeSet<Member> treeSet; //TreeSet 선언
 	
-	public MemberHashSet() {
-		hashSet = new HashSet<>(); //멤버로 선언한 HashSet 생성
+	public MemberTreeSet() {
+		treeSet = new TreeSet<Member>(new Member()); //멤버로 선언한 TreeSet 생성
 	}
-	public MemberHashSet(int size) {  //HashSet 에 멤버 추가
-		hashSet = new HashSet<>(size);
-	}
+
 	public void addMember(Member member) {
-		hashSet.add(member);
+		treeSet.add(member);
 	}
 	public boolean removeMember(int memberId) { //멤버 아이디를 매개변수로, 삭제 여부를 반환
 		
-		Iterator<Member> ir = hashSet.iterator();
+		Iterator<Member> ir = treeSet.iterator();
 		while(ir.hasNext()) {
 			Member member = ir.next();
 			int tempId = member.getMemberId();
 			if(tempId == memberId){            // 멤버아이디가 매개변수와 일치하면 
-				hashSet.remove(member);           // 해당 멤버를 삭제
+				treeSet.remove(member);           // 해당 멤버를 삭제
 				return true;                   // true 반환
 			}
 		}
@@ -32,7 +30,7 @@ public class MemberHashSet {
 		return false;
 	}
 	public void showAllMember() {
-		for(Member member : hashSet) {
+		for(Member member : treeSet) {
 			System.out.println(member);
 		}
 		System.out.println();
